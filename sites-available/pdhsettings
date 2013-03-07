@@ -3,8 +3,9 @@ server {
 
     server_name  www.linandg.com linandg.com *.linandg.com *.linandg.*;
  
+ 	location / {
     proxy_pass  http://blog.thepaydayhound.com;
-
+    }
 }
 
 server {
@@ -12,6 +13,7 @@ server {
 
     server_name  www.linandg.com/tools;
  
-    proxy_pass  http://dev.thepaydayhound.com;
-
+    location / {
+    	proxy_pass  http://dev.thepaydayhound.com;
+    }
 }
