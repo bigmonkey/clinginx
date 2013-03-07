@@ -1,0 +1,17 @@
+server {
+	listen   80; 
+
+    server_name  www.linandg.com linandg.com *.linandg.com *.linandg.*;
+ 
+    proxy_pass  http://blog.thepaydayhound.com;
+
+}
+
+server {
+	listen   80; 
+
+    server_name  www.linandg.com/tools;
+ 
+    proxy_pass  http://dev.thepaydayhound.com;
+
+}
