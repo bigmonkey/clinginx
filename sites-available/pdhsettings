@@ -6,12 +6,6 @@ server {
  	location / {
     proxy_pass  http://blog.thepaydayhound.com;
     }
-}
-
-server {
-	listen   80; 
-
-    server_name  www.linandg.com;
  
     location /tools {
     	proxy_pass  http://dev.thepaydayhound.com;
