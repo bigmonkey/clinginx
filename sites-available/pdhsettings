@@ -1,7 +1,7 @@
 server {
 	listen   80; 
 
-    server_name  www.linandg.com linandg.com *.linandg.com *;
+    server_name  www.linandg.com linandg.com *.linandg.com;
  
  	location / {
     proxy_pass  http://blog.thepaydayhound.com;
