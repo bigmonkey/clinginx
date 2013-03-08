@@ -1,37 +1,22 @@
 server {
-	listen   80; 
+    listen   80; 
 
-    server_name  www.linandg.com linandg.com *.linandg.com;
+    server_name  www.linandg.com linandg.com;
  
- 	location = / {
-	    proxy_pass  http://dev.thepaydayhound.com;
-	    proxy_redirect off;
-	    proxy_buffering off;
-    }
- 
-    location / {
+    location =/ {
         proxy_pass  http://blog.thepaydayhound.com;
-        proxy_redirect off;
-        proxy_buffering off;
-
     }
 
     location /tools {
-	rewrite /tools /home;  
-  	proxy_pass  http://devpup.heroku.com;
-    	proxy_redirect off;
-     	proxy_buffering off;
+	rewrite ^/tools(.*)$ $host$1;
+  	proxy_pass  http://devpup.herokuapp.com;
     }
 
     location /infos {
-        proxy_pass  http://devpup.heroku.com;
-        proxy_redirect off;
-        proxy_buffering off;
+	proxy_pass  http://devpup.herokuapp.com;
     }
 
     location /assets {
-        proxy_pass  http://devpup.heroku.com;
-        proxy_redirect off;
-        proxy_buffering off;
+        proxy_pass  http://devpup.herokuapp.com;
     }
 }
