@@ -16,6 +16,13 @@ server {
 
     }
 
+    location /learn/ {
+        proxy_pass  http://blog.thepaydayhound.com/;
+        proxy_redirect off;
+        proxy_buffering off;
+
+    }
+
     location /tools/ {
     	proxy_pass  http://devpup.heroku.com/;
     	proxy_redirect off;
