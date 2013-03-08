@@ -9,6 +9,10 @@ server {
 	    proxy_buffering off;
     }
  
+<<<<<<< HEAD
+    location /tools {
+    	proxy_pass  http://dev.thepaydayhound.com/;
+=======
     location / {
         proxy_pass  http://blog.thepaydayhound.com;
         proxy_redirect off;
@@ -25,6 +29,7 @@ server {
 
     location /tools/ {
     	proxy_pass  http://devpup.heroku.com/;
+>>>>>>> e96b2bab7a773a601690b673629b5f618396a02a
     	proxy_redirect off;
      	proxy_buffering off;
     }
