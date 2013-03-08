@@ -16,27 +16,21 @@ server {
 
     }
 
-    location /learn/ {
-        proxy_pass  http://blog.thepaydayhound.com/;
-        proxy_redirect off;
-        proxy_buffering off;
-
-    }
-
-    location /tools/ {
-    	proxy_pass  http://devpup.heroku.com/;
+    location /tools {
+	rewrite /tools /home;  
+  	proxy_pass  http://devpup.heroku.com;
     	proxy_redirect off;
      	proxy_buffering off;
     }
 
-    location /infos/ {
-        proxy_pass  http://devpup.heroku.com/infos/;
+    location /infos {
+        proxy_pass  http://devpup.heroku.com;
         proxy_redirect off;
         proxy_buffering off;
     }
 
-    location /assets/ {
-        proxy_pass  http://devpup.heroku.com/assets/;
+    location /assets {
+        proxy_pass  http://devpup.heroku.com;
         proxy_redirect off;
         proxy_buffering off;
     }
