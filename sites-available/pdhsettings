@@ -3,16 +3,34 @@ server {
 
     server_name  www.linandg.com linandg.com *.linandg.com;
  
- 	location / {
-	    proxy_pass  http://blog.thepaydayhound.com;
+ 	location = / {
+	    proxy_pass  http://dev.thepaydayhound.com;
 	    proxy_redirect off;
 	    proxy_buffering off;
-
     }
  
-    location /tools/ tools {
-    	proxy_pass  http://dev.thepaydayhound.com/;
+    location / {
+        proxy_pass  http://blog.thepaydayhound.com;
+        proxy_redirect off;
+        proxy_buffering off;
+
+    }
+
+    location /tools/ {
+    	proxy_pass  http://devpup.heroku.com/;
     	proxy_redirect off;
      	proxy_buffering off;
+    }
+
+    location /infos/ {
+        proxy_pass  http://devpup.heroku.com/infos/;
+        proxy_redirect off;
+        proxy_buffering off;
+    }
+
+    location /assets/ {
+        proxy_pass  http://devpup.heroku.com/assets/;
+        proxy_redirect off;
+        proxy_buffering off;
     }
 }
