@@ -10,7 +10,7 @@ server {
 
     }
  
-    location /tools/ tools {
+    location /tools {
     	proxy_pass  http://dev.thepaydayhound.com/;
     	proxy_redirect off;
      	proxy_buffering off;
