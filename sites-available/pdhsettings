@@ -4,19 +4,8 @@ server {
     server_name  www.linandg.com linandg.com;
  
     location =/ {
-        proxy_pass  http://blog.thepaydayhound.com;
+        proxy_set_header Host moo.com;
+        proxy_pass http://localhost:8000 ;
     }
 
-    location /tools {
-	rewrite ^/tools(.*)$ $host$1;
-  	proxy_pass  http://devpup.herokuapp.com;
-    }
-
-    location /infos {
-	proxy_pass  http://devpup.herokuapp.com;
-    }
-
-    location /assets {
-        proxy_pass  http://devpup.herokuapp.com;
-    }
 }

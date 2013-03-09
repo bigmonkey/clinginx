@@ -1,1 +1,33 @@
-/etc/nginx/sites-available/pdhsettings
+server {
+   	listen  	80;
+	server_name	linandg.com *.linandg.com;
+	return 301 $scheme://www.$host$request_uri;
+}
+
+
+server {
+    listen   80; 
+
+    server_name  www.linandg.com; # none www is screened above
+
+    #sets homepage to rails app	
+    location =/ {
+        proxy_set_header Host devpup.herokuapp.com;
+        proxy_pass  http://devpup.herokuapp.com;
+    }
+
+    #sends everything to wordpress except for rails stuff below
+    location / {
+	#adds slash to non-file names
+        rewrite ^([^.]*[^/])$ $1/ permanent;  
+	proxy_set_header Host 54.235.91.249;
+        proxy_pass  http://54.235.91.249;
+    }
+
+   #sends all rails items to rails
+   location ~/(infos|assets|jstyle|header|footer|applicants|borrowers|secureds|lenders|prepaids|homes) {
+	proxy_set_header Host devpup.herokuapp.com;
+	proxy_pass http://devpup.herokuapp.com;
+    }
+
+}
