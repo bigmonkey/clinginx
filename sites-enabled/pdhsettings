@@ -12,22 +12,22 @@ server {
 
     #sets homepage to rails app	
     location =/ {
-        proxy_set_header Host devpup.herokuapp.com;
+        proxy_set_header Host devpup.herokuapp.com; #required for remote server
         proxy_pass  http://devpup.herokuapp.com;
     }
 
     #sends everything to wordpress except for rails stuff below
     location / {
-	#adds slash to non-file names
-        rewrite ^([^.]*[^/])$ $1/ permanent;  
-	proxy_set_header Host 54.235.91.249;
-        proxy_pass  http://54.235.91.249;
+	   #adds slash to non-file names
+       rewrite ^([^.]*[^/])$ $1/ permanent;  
+	   proxy_set_header Host 54.235.91.249;  #required for remote server
+       proxy_pass  http://54.235.91.249;
     }
 
    #sends all rails items to rails
    location ~/(infos|assets|jstyle|header|footer|applicants|borrowers|secureds|lenders|prepaids|homes) {
-	proxy_set_header Host devpup.herokuapp.com;
-	proxy_pass http://devpup.herokuapp.com;
+	   proxy_set_header Host devpup.herokuapp.com;  #required for remote server
+	   proxy_pass http://devpup.herokuapp.com;
     }
 
 }
